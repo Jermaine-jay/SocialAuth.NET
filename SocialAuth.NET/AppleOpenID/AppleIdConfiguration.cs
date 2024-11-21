@@ -17,7 +17,6 @@ namespace SocialAuth.NET.AppleOpenID
 
         public object ValidateAppleToken(string audience)
         {
-            audience = "com.activEight.activEight";
             return _openId.ValidateToken<ApplePayload>(audience, _baseUrl, _metadataUrl);
         }
     }
