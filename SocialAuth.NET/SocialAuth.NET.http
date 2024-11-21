@@ -1,0 +1,6 @@
+@SocialAuth.NET_HostAddress = http://localhost:5179
+
+GET {{SocialAuth.NET_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
