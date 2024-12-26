@@ -61,7 +61,6 @@ Below is an example of a controller for validating tokens with multiple OAuth pr
             MicrosoftUser = microsoftUser
         });
     }
-}
 ```
 
 # Explanation:
