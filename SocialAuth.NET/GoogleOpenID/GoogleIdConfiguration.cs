@@ -14,7 +14,7 @@ namespace SocialAuth.NET.GoogleOpenID
             _metadataUtl = _baseUrl + "/.well-known/openid-configuration";
         }
 
-        public object ValidateGoogleToken(string audience)
+        public string ValidateGoogleToken(string audience)
         {
             return _openId.ValidateToken<GooglePayload>(audience, _baseUrl, _metadataUtl);
         }

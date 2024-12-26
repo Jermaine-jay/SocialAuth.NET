@@ -15,7 +15,7 @@ namespace SocialAuth.NET.AppleOpenID
             _metadataUrl = _baseUrl + "/.well-known/openid-configuration";
         }
 
-        public object ValidateAppleToken(string audience)
+        public string ValidateAppleToken(string audience)
         {
             return _openId.ValidateToken<ApplePayload>(audience, _baseUrl, _metadataUrl);
         }

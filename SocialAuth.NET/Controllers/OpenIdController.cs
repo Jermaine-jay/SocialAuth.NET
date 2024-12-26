@@ -11,14 +11,14 @@ namespace SocialAuth.NET.Controllers
     {
         public OpenIdController() { }
 
-        [HttpPost("microsoft-login")]
-        public async Task<IActionResult> MicrosoftAuth(string token)
+        [HttpPost("openId-auth")]
+        public async Task<IActionResult> OpenIdAuth(string token)
         {
             OpenIdConfiguration res = new OpenIdConfiguration(token);
-            //var result = res.googleIdConfiguration.ValidateGoogleToken("b");
-            //var result = res.appleIdConfiguration.ValidateAppleToken("a");
-            var result = res.microsoftIdConfiguration.ValidateMicrosoftToken("c", "d");
-            return Ok(result);
+            string googleUser = res.googleIdConfiguration.ValidateGoogleToken("your app-audience");
+            string appleUser = res.appleIdConfiguration.ValidateAppleToken("your-app-audience");
+            string microsoftUser = res.microsoftIdConfiguration.ValidateMicrosoftToken("your-app-audience", "your-app-tenantid");
+            return Ok();
         }
     }
 }

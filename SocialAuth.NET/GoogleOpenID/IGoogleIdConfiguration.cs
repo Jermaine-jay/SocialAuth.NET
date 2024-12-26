@@ -2,6 +2,6 @@
 {
     public interface IGoogleIdConfiguration
     {
-        object ValidateGoogleToken(string audience);
+        string ValidateGoogleToken(string audience);
     }
 }

@@ -4,6 +4,6 @@ namespace SocialAuth.NET.MicrosoftOpenID
 {
     public interface IMicrosoftIdConfiguration
     {
-        object ValidateMicrosoftToken(string audience, string tenant);
+        string ValidateMicrosoftToken(string audience, string tenant);
     }
 }
