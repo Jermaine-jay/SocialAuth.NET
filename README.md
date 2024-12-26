@@ -44,11 +44,7 @@ dotnet restore
 ## Example Controller Implementation
 Below is an example of a controller for validating tokens with multiple OAuth providers:
 
-
-public class OpenIdController : ControllerBase
-{
-
-    [HttpPost("openId-auth")]
+```sh
     public async Task<IActionResult> OpenIdAuth(string token)
     {
         OpenIdConfiguration res = new OpenIdConfiguration(token);
@@ -66,6 +62,7 @@ public class OpenIdController : ControllerBase
         });
     }
 }
+```
 
 # Explanation:
 - **Endpoint**: POST /api/OpenId/openId-auth
