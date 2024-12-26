@@ -1,4 +1,4 @@
-# OAuth 2.0 Implementation Demo
+# OAuth 2.0 Implementation
 
 This is a simple **ASP.NET Core** application demonstrating how to integrate **OAuth 2.0** authentication with popular providers such as **Google**, **Apple**, **Microsoft**, and **Facebook**. The app showcases the process of setting up authentication and retrieving user information from these providers.
 
