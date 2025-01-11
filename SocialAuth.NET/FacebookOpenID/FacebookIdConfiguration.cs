@@ -1,8 +1,4 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
-using SocialAuth.NET.AppleOpenID;
-using SocialAuth.NET.GoogleOpenID;
-using SocialAuth.NET.OpenID;
+﻿using SocialAuth.NET.OpenID;
 
 namespace SocialAuth.NET.FacebookOpenID
 {
@@ -29,7 +25,7 @@ namespace SocialAuth.NET.FacebookOpenID
             client.BaseAddress = new Uri(_baseUrl);
             HttpResponseMessage? debugTokenResponse = client.GetAsync(url).Result;
 
-            var stringThing = debugTokenResponse.Content.ReadAsStringAsync().Result;
+            string stringThing = debugTokenResponse.Content.ReadAsStringAsync().Result;
             FBUser? userOBJK = JsonConvert.DeserializeObject<FBUser>(stringThing);
 
             if (userOBJK?.Data.IsValid == false)

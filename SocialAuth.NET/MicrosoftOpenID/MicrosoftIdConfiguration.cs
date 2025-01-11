@@ -1,5 +1,4 @@
-﻿using SocialAuth.NET.AppleOpenID;
-using SocialAuth.NET.OpenID;
+﻿using SocialAuth.NET.OpenID;
 
 namespace SocialAuth.NET.MicrosoftOpenID
 {
@@ -21,7 +20,7 @@ namespace SocialAuth.NET.MicrosoftOpenID
             string baseUrl = _baseUrl + $"/{tenant}/v2.0";
             string metadataUrl = $"{_baseUrl}/{tenant}/{_metadataUrl}";
 
-            return _openId.ValidateToken<MicrosoftPayload>(audience, baseUrl,metadataUrl);
+            return _openId.ValidateToken<MicrosoftPayload>(audience, baseUrl, metadataUrl);
         }
     }
 }
