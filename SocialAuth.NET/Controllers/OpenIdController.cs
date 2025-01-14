@@ -1,4 +1,5 @@
-﻿using SocialAuth.NET.OpenID;
+﻿using Microsoft.AspNetCore.Mvc;
+using SocialAuth.NET.OpenID;
 
 namespace SocialAuth.NET.Controllers
 {

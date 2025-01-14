@@ -1,4 +1,6 @@
-﻿using SocialAuth.NET.OpenID;
+﻿using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
+using SocialAuth.NET.OpenID;
 
 namespace SocialAuth.NET.FacebookOpenID
 {

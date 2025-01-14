@@ -1,7 +1,11 @@
-﻿using SocialAuth.NET.AppleOpenID;
+﻿using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using SocialAuth.NET.AppleOpenID;
 using SocialAuth.NET.FacebookOpenID;
 using SocialAuth.NET.GoogleOpenID;
 using SocialAuth.NET.MicrosoftOpenID;
+using System.Text;
 
 namespace SocialAuth.NET.OpenID
 {
