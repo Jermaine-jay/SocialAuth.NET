@@ -4,9 +4,10 @@ namespace SocialAuth.NET.GoogleOpenID
 {
     public class GoogleIdConfiguration : IGoogleIdConfiguration
     {
-        private readonly OpenIdConfiguration _openId;
         private readonly string _baseUrl;
         private readonly string _metadataUtl;
+        private readonly OpenIdConfiguration _openId;
+
         public GoogleIdConfiguration(OpenIdConfiguration openId)
         {
             _openId = openId;

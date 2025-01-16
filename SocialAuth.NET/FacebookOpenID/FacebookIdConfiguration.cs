@@ -6,10 +6,10 @@ namespace SocialAuth.NET.FacebookOpenID
 {
     public class FacebookIdConfiguration : IFacebookIdConfiguration
     {
-        protected readonly OpenIdConfiguration _openId;
         private readonly string _userUrl;
         private readonly string _tokenUrl;
         private readonly string _baseUrl;
+        protected readonly OpenIdConfiguration _openId;
 
         public FacebookIdConfiguration(OpenIdConfiguration openId)
         {

@@ -11,14 +11,15 @@ namespace SocialAuth.NET.OpenID
 {
     public class OpenIdConfiguration
     {
-        private const string SupportedJwtAlgorithm = "RS256";
+        public string Token { get; private set; }
+        private readonly HttpClient _httpClient;
         internal const int MaxJwtLength = 10000;
+        private const string SupportedJwtAlgorithm = "RS256";
         public IAppleIdConfiguration appleIdConfiguration;
         public IGoogleIdConfiguration googleIdConfiguration;
-        public IMicrosoftIdConfiguration microsoftIdConfiguration;
         public IFacebookIdConfiguration facebookIdConfiguration;
-        private readonly HttpClient _httpClient;
-        public string Token { get; private set; }
+        public IMicrosoftIdConfiguration microsoftIdConfiguration;
+
 
         public OpenIdConfiguration(string token)
         {
@@ -26,8 +27,8 @@ namespace SocialAuth.NET.OpenID
             _httpClient = new HttpClient();
             appleIdConfiguration = new AppleIdConfiguration(this);
             googleIdConfiguration = new GoogleIdConfiguration(this);
-            microsoftIdConfiguration = new MicrosoftIdConfiguration(this);
             facebookIdConfiguration = new FacebookIdConfiguration(this);
+            microsoftIdConfiguration = new MicrosoftIdConfiguration(this);
         }
 
         public string ValidateToken<T>(string audience, string baseUrl, string path) where T : Payload
@@ -60,7 +61,7 @@ namespace SocialAuth.NET.OpenID
             JsonWebKeySet jsonWebKeys = new JsonWebKeySet(response);
             IList<SecurityKey> signingKeys = jsonWebKeys.GetSigningKeys();
 
-            var key = signingKeys.FirstOrDefault(k => k.KeyId == header?.Keys);
+            SecurityKey? key = signingKeys.FirstOrDefault(k => k.KeyId == header?.Keys);
             if (key == null)
                 throw new SecurityTokenInvalidSignatureException("Invalid token key");
 
@@ -73,7 +74,7 @@ namespace SocialAuth.NET.OpenID
 
         private T ValidatePayload<T>(string encodedPayload, string audience, string baseUrl) where T : Payload
         {
-            var payload = JsonConvert.DeserializeObject<T>(Base64UrlToString(encodedPayload));
+            T? payload = JsonConvert.DeserializeObject<T>(Base64UrlToString(encodedPayload));
 
             if (payload == null)
                 throw new SecurityTokenException("Invalid payload");

@@ -4,9 +4,9 @@ namespace SocialAuth.NET.MicrosoftOpenID
 {
     public class MicrosoftIdConfiguration : IMicrosoftIdConfiguration
     {
-        private readonly OpenIdConfiguration _openId;
         private readonly string _baseUrl;
         private readonly string _metadataUrl;
+        private readonly OpenIdConfiguration _openId;
 
         public MicrosoftIdConfiguration(OpenIdConfiguration openId)
         {
