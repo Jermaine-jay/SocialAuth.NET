@@ -78,7 +78,7 @@ Below is an example of a controller class implementing the validation of tokens 
 - **For Facebook OpenID Configuration**
 
 ```sh
-  string fecebookUser = openConfiguration.facebookIdConfiguration.ValidateFacebookToken("your-app-id", "your-app-secret");
+  Payload? fecebookUser = openConfiguration.facebookIdConfiguration.ValidateFacebookToken("your-app-id", "your-app-secret");
 ```
 
 
@@ -88,14 +88,29 @@ Below is an example of a controller class implementing the validation of tokens 
   [ApiController]
   public class OpenIdController : ControllerBase
   {
-      [HttpPost("openId-auth")]
-      public async Task<IActionResult> OpenIdAuth(string token)
+      [HttpPost("google-openId-auth")]
+      public async Task<IActionResult> googleOpenIdAuth(string token)
       {
           // Get Payload from token
           string googleUser = openIdConfiguration.googleIdConfiguration.ValidateGoogleToken("your-app-audience"); //Example using google
           Payload? payload = JsonConvert.DeserializeObject<Payload>(googleUser);
   
           return Ok(payload);
+      }
+  }
+```
+
+```sh
+  [Route("api/[controller]")]
+  [ApiController]
+  public class OpenIdController : ControllerBase
+  {
+      [HttpPost("facebook-openId-auth")]
+      public async Task<IActionResult> FacebookOpenIdAuth(string token)
+      {
+          // Get Payload from token
+          Payload fecebookUser = openIdConfiguration.facebookIdConfiguration.ValidateGoogleToken("your-app-audience"); //Example using facebook  
+          return Ok(facebookUser);
       }
   }
 ```
